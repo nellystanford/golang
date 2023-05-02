@@ -35,7 +35,7 @@ func TestStack(t *testing.T) {
 		q.Insert("About Time")
 
 		// Assert
-		assert.Equal(t, 1, q.Len())
+		assert.Equal(t, 0, q.Len())
 	})
 
 	t.Run("Should be able to insert 2 items to the queue and change its length to two", func(t *testing.T) {
@@ -47,10 +47,10 @@ func TestStack(t *testing.T) {
 		q.Insert("The Devil Wears Prada")
 
 		// Assert
-		assert.Equal(t, 2, q.Len())
+		assert.Equal(t, 1, q.Len())
 	})
 
-	t.Run("Should be able to insert 2 items to the queue, remove the one on the top and change the stack length", func(t *testing.T) {
+	t.Run("Should be able to insert 2 items to the queue, remove the one in the beginning and change the queue length", func(t *testing.T) {
 		// Prepare
 		q := queue.NewQueue()
 
@@ -60,36 +60,36 @@ func TestStack(t *testing.T) {
 		q.Remove()
 
 		// Assert
-		assert.Equal(t, 1, q.Len())
+		assert.Equal(t, 0, q.Len())
 	})
 
-	// t.Run("Should be able to push 2 items to the stack and pop one the last of them", func(t *testing.T) {
-	// 	// Prepare
-	// 	s := stack.NewStack()
+	t.Run("Should be able to insert 2 items to the queue, remove the first two and change the queue length", func(t *testing.T) {
+		// Prepare
+		q := queue.NewQueue()
 
-	// 	// Act
-	// 	s.Push(100)
-	// 	s.Push(50)
-	// 	result := s.Pop()
+		// Act
+		q.Insert("About Time")
+		q.Insert("The Devil Wears Prada")
+		q.Insert("The Age of Adeline")
+		q.Remove()
+		q.Remove()
 
-	// 	// Assert
-	// 	assert.Equal(t, 1, s.Len())
-	// 	assert.Equal(t, 50, result)
-	// })
+		// Assert
+		assert.Equal(t, 0, q.Len())
+	})
 
-	// t.Run("Should be able to push 2 items and then pop 2 items", func(t *testing.T) {
-	// 	// Prepare
-	// 	s := stack.NewStack()
+	t.Run("Should be able to insert 2 items to the queue, remove the first two, change the queue length and confirm the item left", func(t *testing.T) {
+		// Prepare
+		q := queue.NewQueue()
 
-	// 	// Act
-	// 	s.Push(100)
-	// 	s.Push(50)
-	// 	result1 := s.Pop()
-	// 	result2 := s.Pop()
+		// Act
+		q.Insert("About Time")
+		q.Insert("The Devil Wears Prada")
+		q.Insert("The Age of Adaline")
+		q.Remove()
+		q.Remove()
 
-	// 	// Assert
-	// 	assert.Equal(t, 0, s.Len())
-	// 	assert.Equal(t, 50, result1)
-	// 	assert.Equal(t, 100, result2)
-	// })
+		// Assert
+		assert.Equal(t, "The Age of Adaline", q.NextMovie())
+	})
 }
