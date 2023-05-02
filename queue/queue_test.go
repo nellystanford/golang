@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestStack(t *testing.T) {
+func TestQueue(t *testing.T) {
 	t.Run("Should be able to create a new queue", func(t *testing.T) {
 		// Prepare
 
