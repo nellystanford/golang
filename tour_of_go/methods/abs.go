@@ -24,3 +24,8 @@ func SetVertexValue(v *Vertex, x, y float64) Vertex {
 func (v Vertex) Abs() float64 {
 	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
+
+func (v *Vertex) Scale(num float64) {
+	v.X *= num
+	v.Y *= num
+}

@@ -42,4 +42,19 @@ func TestMethods(t *testing.T) {
 		// Assert
 		assert.Equal(t, float64(5), aux)
 	})
+
+	t.Run("Should be able to scale what is inside of a vertex", func(t *testing.T) {
+		// Prepare
+		q := methods.NewVertex()
+		methods.SetVertexValue(q, 3, 4)
+
+		// Act
+		q.Scale(10)
+
+		// Assert
+		assert.Equal(t, float64(30), q.X)
+		assert.Equal(t, float64(40), q.Y)
+		assert.Equal(t, float64(50), q.Abs())
+
+	})
 }
